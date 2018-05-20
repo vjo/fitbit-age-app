@@ -1,0 +1,5 @@
+<svg class="background">
+  <text id="age" />
+  <text class="instruction" id="instruction0" />
+  <text class="instruction" id="instruction1" />
+</svg>

@@ -1,0 +1,19 @@
+{
+  "fitbit": {
+    "appUUID": "d6c65a40-d9bd-48d8-a5c1-96a9747e774b",
+    "appType": "app",
+    "appDisplayName": "BirthdayClock",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#607d8b",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "BirthdayClock"
+      }
+    }
+  }
+}
