@@ -1,9 +1,11 @@
-# fitbit-birthday-clock
-Simple Fitbit watch app with companion app.
-Takes user input to display a an "age clock" based on birthday date.
-It refresh every seconds.
+# fitbit-age-app
+App compatible Fitbit Versa & Fitbit Ionic.
 
-Using message socket and monospaced digits.
+[Fitbit Store Link](https://gam.fitbit.com/gallery/app/d6c65a40-d9bd-48d8-a5c1-96a9747e774b)
+
+![logo](/screenshots/logo.png) 
+
+"Age" display your age with decimals updating every seconds.
 
 ## Screenshots
 
