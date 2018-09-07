@@ -1,25 +1,41 @@
-.background {
+#root {
   width: 100%;
   height: 100%;
-  viewport-fill: fb-slate-press;
+  viewport-fill: fb-black;
+}
+
+.text {
+  fill: fb-white;
+  font-family: Seville-Regular;
+  text-length: 300;
+  x: 6;
 }
 
 #age {
-  font-size: 24;
-  font-family: Seville-Bold;
-  text-length: 120;
-  text-anchor: middle;
-  x: 50%;
+  font-size: 120;
   y: 50%;
-  fill: fb-slate;
 }
 
-.instruction {
-  font-size: 25;
-  font-family: Seville-Regular;
-  text-length: 120;
-  text-anchor: middle;
-  fill: fb-slate;
+#age-decimals {
+  font-size: 50;
+  y: 68%;
 }
-#instruction0 { x: 50%; y: 50%; }
-#instruction1 { x: 50%; y: 50% + 35; }
+
+#age-unit {
+  fill: fb-magenta;
+  font-size: 24;
+  font-family: Seville-Bold;
+  y: 80%;
+}
+
+.instruction { font-size: 28; }
+#instruction0 { y: 50%; }
+#instruction1 { y: 60%; }
+
+#progress-bar {
+  fill: fb-magenta;
+  width: 0%;
+  height: 3%;
+  x: 0;
+  y: 97%;
+}

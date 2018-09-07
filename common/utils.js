@@ -1,13 +1,13 @@
 // Convert a number to a special monospace number
 export function monoDigits(digits) {
-  var ret = "";
-  var str = digits.toString();
+  let ret = '';
+  let str = digits.toString();
   for (var index = 0; index < str.length; index++) {
     var num = str.charAt(index);
     if(isNaN(parseInt(num, 10))) {
       ret = ret.concat(num);
     } else {
-      ret = ret.concat(hex2a("0x1" + num));
+      ret = ret.concat(hex2a('0x1' + num));
     }
   }
   return ret;
@@ -15,9 +15,9 @@ export function monoDigits(digits) {
 
 // Hex to string
 export function hex2a(hex) {
-  var str = '';
+  let str = '';
   for (var index = 0; index < hex.length; index += 2) {
-    var val = parseInt(hex.substr(index, 2), 16);
+    let val = parseInt(hex.substr(index, 2), 16);
     if (val) str += String.fromCharCode(val);
   }
   return str.toString();

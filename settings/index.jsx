@@ -2,11 +2,11 @@ function mySettings(props) {
   return (
     <Page>
       <Section
-        title={<Text bold align="center">Birthday Clock Settings</Text>}
+        title={<Text bold align="center">Age App Settings</Text>}
       >
         <TextInput
-          label="Birthday date"
           title="Birthday date"
+          label="Birthday date"
           placeholder="YYYY-MM-DD"
           settingsKey="birthday"
         />

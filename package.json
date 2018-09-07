@@ -2,9 +2,9 @@
   "fitbit": {
     "appUUID": "d6c65a40-d9bd-48d8-a5c1-96a9747e774b",
     "appType": "app",
-    "appDisplayName": "BirthdayClock",
+    "appDisplayName": "Age",
     "iconFile": "resources/icon.png",
-    "wipeColor": "#607d8b",
+    "wipeColor": "#e91e63",
     "requestedPermissions": [],
     "buildTargets": [
       "higgs",
@@ -12,7 +12,7 @@
     ],
     "i18n": {
       "en": {
-        "name": "BirthdayClock"
+        "name": "Age"
       }
     }
   }

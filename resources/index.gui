@@ -1,5 +1,8 @@
-<svg class="background">
-  <text id="age" />
-  <text class="instruction" id="instruction0" />
-  <text class="instruction" id="instruction1" />
+<svg id="root">
+  <text class="text" id="age" />
+  <text class="text" id="age-decimals" />
+  <text class="text" id="age-unit" />
+  <text class="text instruction" id="instruction0" />
+  <text class="text instruction" id="instruction1" />
+  <rect id="progress-bar"/>
 </svg>
