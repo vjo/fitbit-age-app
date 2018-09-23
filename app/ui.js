@@ -37,9 +37,9 @@ AgeUI.prototype.renderInstructions = function(error) {
 AgeUI.prototype.renderAge = function(ageMilliseconds) {
   this.clearInstructions();
   this.updateProgressBar(ageMilliseconds);
-  const ageInYear = monoDigits((ageMilliseconds / MILLISECONDS_IN_YEAR).toFixed(9)).split('.');
-  this.ageLabel.text = ageInYear[0];
-  this.ageDecimalsLabel.text = `.${ageInYear[1]}`;
+  const ageInYears = monoDigits((ageMilliseconds / MILLISECONDS_IN_YEAR).toFixed(9)).split('.');
+  this.ageLabel.text = ageInYears[0];
+  this.ageDecimalsLabel.text = `.${ageInYears[1]}`;
   this.ageUnitLabel.text = 'YEARS OLD';
 };
 
