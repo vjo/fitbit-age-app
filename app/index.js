@@ -5,26 +5,34 @@ import { read_json_file, write_json_file } from '../common/file';
 
 const ui = new AgeUI();
 let error = false;
+
 let birthday = read_json_file('birthday');
 if (birthday) {
   const birthdayData = JSON.parse(birthday).name.split('-');
   birthday = new Date(birthdayData[0], birthdayData[1]-1, birthdayData[2]);
 }
 
+let color = read_json_file('theme');
+if (color) {
+  ui.updateTheme(color);
+}
+
 messaging.peerSocket.onmessage = evt => {
-  console.log(`App received: ${JSON.stringify(evt)}`);
   if (evt.data.key === 'birthday' && evt.data.newValue) {
     write_json_file('birthday', evt.data.newValue);
     const birthdayData = JSON.parse(evt.data.newValue).name.split('-');
     if (birthdayData.length === 3) {
       error = false;
       birthday = new Date(birthdayData[0], birthdayData[1]-1, birthdayData[2]);
-      console.log(`Setting birthday date to: ${birthday}`);
     } else {
       console.log('Error, birthday value non valid');
       error = true;
       birthday = null;
     }
+  } else if (evt.data.key === 'theme' && evt.data.newValue) {
+    const color = JSON.parse(evt.data.newValue);
+    write_json_file('theme', color);
+    ui.updateTheme(color);
   }
 };
 

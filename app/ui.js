@@ -30,7 +30,7 @@ AgeUI.prototype.renderInstructions = function(error) {
     this.instructionLabel1.text = 'Invalid birthday date.';
   } else {
     this.instructionLabel0.text = 'Use companion app to';
-    this.instructionLabel1.text = 'set your birthday date.'; 
+    this.instructionLabel1.text = 'set your birthday date.';
   }
 };
 
@@ -47,3 +47,8 @@ AgeUI.prototype.updateProgressBar = function(ageMilliseconds) {
   const decimal = (ageMilliseconds / MILLISECONDS_IN_YEAR).toFixed(9) % 1; // Keep decimal part by using `% 1`
   this.progressBar.width = this.screenWidth * decimal;
 };
+
+AgeUI.prototype.updateTheme = function(color) {
+  this.progressBar.style.fill = color;
+  this.ageUnitLabel.style.fill = color;
+}
