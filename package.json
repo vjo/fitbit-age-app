@@ -1,4 +1,11 @@
 {
+  "name": "fitbit-age-app",
+  "version": "2.1.0",
+  "license": "MIT",
+  "devDependencies": {
+    "@fitbit/sdk": "~2.0.1",
+    "@fitbit/sdk-cli": "^1.0.2"
+  },
   "fitbit": {
     "appUUID": "d6c65a40-d9bd-48d8-a5c1-96a9747e774b",
     "appType": "app",
@@ -15,5 +22,9 @@
         "name": "Age"
       }
     }
+  },
+  "scripts": {
+    "build": "fitbit-build",
+    "debug": "fitbit"
   }
 }
