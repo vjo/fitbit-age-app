@@ -1,5 +1,6 @@
 import document from 'document';
-import { MILLISECONDS_IN_YEAR, monoDigits } from '../common/utils';
+import { monoDigits } from '../common/utils';
+
 
 export default function AgeUI() {
   this.screenWidth = document.getElementById('root').width;
@@ -34,18 +35,16 @@ AgeUI.prototype.renderInstructions = function(error) {
   }
 };
 
-AgeUI.prototype.renderAge = function(ageMilliseconds) {
+AgeUI.prototype.renderAge = function({ year, decimal, progress }) {
   this.clearInstructions();
-  this.updateProgressBar(ageMilliseconds);
-  const ageInYears = monoDigits((ageMilliseconds / MILLISECONDS_IN_YEAR).toFixed(9)).split('.');
-  this.ageLabel.text = ageInYears[0];
-  this.ageDecimalsLabel.text = `.${ageInYears[1]}`;
+  this.updateProgressBar(progress);
+  this.ageLabel.text = monoDigits(year);
+  this.ageDecimalsLabel.text = `.${monoDigits(decimal)}`;
   this.ageUnitLabel.text = 'YEARS OLD';
 };
 
-AgeUI.prototype.updateProgressBar = function(ageMilliseconds) {
-  const decimal = (ageMilliseconds / MILLISECONDS_IN_YEAR).toFixed(9) % 1; // Keep decimal part by using `% 1`
-  this.progressBar.width = this.screenWidth * decimal;
+AgeUI.prototype.updateProgressBar = function(progress) {
+  this.progressBar.width = this.screenWidth * progress;
 };
 
 AgeUI.prototype.updateTheme = function(color) {

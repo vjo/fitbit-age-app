@@ -29,4 +29,25 @@ const SECONDS_IN_MINUTE = 60;
 const MINUTES_IN_HOUR = 60;
 const HOURS_IN_DAY = 24;
 const DAYS_IN_YEAR = 365;
-export const MILLISECONDS_IN_YEAR = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_YEAR;
+const MILLISECONDS_IN_YEAR = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_YEAR;
+
+// Return age in year object
+export function calculateAgeInYear(birthdayData) {
+  const birthYear = birthdayData[0];
+  const birthMonth = birthdayData[1] - 1;
+  const birthDay = birthdayData[2];
+  const currentYear = (new Date()).getFullYear();
+
+  const birthdayThisYearDate = new Date(currentYear, birthMonth, birthDay);
+
+  const decimalDiff = (Date.now() - birthdayThisYearDate.getTime()) / MILLISECONDS_IN_YEAR;
+  const yearDiff = currentYear - birthYear;
+  const age = yearDiff + decimalDiff;
+  const parts = age.toFixed(9).toString().split('.');
+
+  return {
+    year: parts[0],
+    decimal: parts[1],
+    progress: 1 + decimalDiff
+  };
+};

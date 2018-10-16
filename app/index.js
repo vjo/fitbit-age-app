@@ -1,5 +1,6 @@
 import * as messaging from 'messaging';
 import AgeUI from "./ui.js";
+import { calculateAgeInYear } from '../common/utils';
 import clock from 'clock';
 import { read_json_file, write_json_file } from '../common/file';
 
@@ -7,10 +8,6 @@ const ui = new AgeUI();
 let error = false;
 
 let birthday = read_json_file('birthday');
-if (birthday) {
-  const birthdayData = JSON.parse(birthday).name.split('-');
-  birthday = new Date(birthdayData[0], birthdayData[1]-1, birthdayData[2]);
-}
 
 let color = read_json_file('theme');
 if (color) {
@@ -19,11 +16,14 @@ if (color) {
 
 messaging.peerSocket.onmessage = evt => {
   if (evt.data.key === 'birthday' && evt.data.newValue) {
-    write_json_file('birthday', evt.data.newValue);
     const birthdayData = JSON.parse(evt.data.newValue).name.split('-');
     if (birthdayData.length === 3) {
+      const year = parseInt(birthdayData[0], 10);
+      const month = parseInt(birthdayData[1], 10);
+      const day = parseInt(birthdayData[2], 10);
+      birthday = [year, month, day];
       error = false;
-      birthday = new Date(birthdayData[0], birthdayData[1]-1, birthdayData[2]);
+      write_json_file('birthday', birthday);
     } else {
       console.log('Error, birthday value non valid');
       error = true;
@@ -39,9 +39,9 @@ messaging.peerSocket.onmessage = evt => {
 clock.granularity = 'seconds'; // Update the clock every second
 
 clock.ontick = (evt) => {
-  if (birthday) {
-    const diff = new Date() - birthday;
-    ui.renderAge(diff);
+  if (Array.isArray(birthday) && birthday.length === 3) {
+    const age = calculateAgeInYear(birthday);
+    ui.renderAge(age);
   } else {
     ui.renderInstructions(error);
   }
