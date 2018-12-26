@@ -2777,9 +2777,14 @@ source-map@^0.5.1, source-map@^0.5.6, source-map@^0.5.7:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
-source-map@^0.7.3, "source-map@git+https://github.com/mozilla/source-map.git#c3a8f5a2a4cc7ac5bc6c06bc93745d3c57bd8860":
+source-map@^0.7.3:
   version "0.7.3"
   resolved "git+https://github.com/mozilla/source-map.git#c3a8f5a2a4cc7ac5bc6c06bc93745d3c57bd8860"
+
+"source-map@https://github.com/mozilla/source-map.git#c3a8f5a2a4cc7ac5bc6c06bc93745d3c57bd8860":
+  version "0.7.3"
+  uid c3a8f5a2a4cc7ac5bc6c06bc93745d3c57bd8860
+  resolved "https://github.com/mozilla/source-map.git#c3a8f5a2a4cc7ac5bc6c06bc93745d3c57bd8860"
 
 source-map@~0.6.1:
   version "0.6.1"

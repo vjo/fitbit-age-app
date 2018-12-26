@@ -48,6 +48,6 @@ export function calculateAgeInYear(birthdayData) {
   return {
     year: parts[0],
     decimal: parts[1],
-    progress: 1 + decimalDiff
+    progress: decimalDiff
   };
 };
