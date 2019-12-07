@@ -39,15 +39,17 @@ export function calculateAgeInYear(birthdayData) {
   const currentYear = (new Date()).getFullYear();
 
   const birthdayThisYearDate = new Date(currentYear, birthMonth, birthDay);
+  const nextBirthdayYear = birthdayThisYearDate < Date.now() ? currentYear + 1 : currentYear;
+  const nextBirthdayDate = new Date(nextBirthdayYear, birthMonth, birthDay);
 
-  const decimalDiff = (Date.now() - birthdayThisYearDate.getTime()) / MILLISECONDS_IN_YEAR;
-  const yearDiff = currentYear - birthYear;
+  const decimalDiff = (Date.now() - nextBirthdayDate.getTime()) / MILLISECONDS_IN_YEAR;
+  const yearDiff = nextBirthdayYear - birthYear;
   const age = yearDiff + decimalDiff;
   const parts = age.toFixed(9).toString().split('.');
 
   return {
     year: parts[0],
     decimal: parts[1],
-    progress: decimalDiff
+    progress: 1 + decimalDiff
   };
 };
