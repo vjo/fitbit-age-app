@@ -28,7 +28,7 @@ AgeUI.prototype.renderInstructions = function(error) {
   this.clearAge();
   if(error) {
     this.instructionLabel0.text = 'Error:';
-    this.instructionLabel1.text = 'Invalid birthday date.';
+    this.instructionLabel1.text = 'Invalid date format.';
   } else {
     this.instructionLabel0.text = 'Use companion app to';
     this.instructionLabel1.text = 'set your birthday date.';

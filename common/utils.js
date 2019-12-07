@@ -30,19 +30,27 @@ const MINUTES_IN_HOUR = 60;
 const HOURS_IN_DAY = 24;
 const DAYS_IN_YEAR = 365;
 const MILLISECONDS_IN_YEAR = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_YEAR;
+const MILLISECONDS_IN_LEAP_YEAR = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * (DAYS_IN_YEAR + 1);
+const isLeapYear = (date) => {
+    var y = date.getFullYear();
+    return !(y % 4) && (y % 100) || !(y % 400);
+};
 
 // Return age in year object
 export function calculateAgeInYear(birthdayData) {
   const birthYear = birthdayData[0];
   const birthMonth = birthdayData[1] - 1;
   const birthDay = birthdayData[2];
+  const birthHour = birthdayData[3];
+  const birthMinute = birthdayData[4];
   const currentYear = (new Date()).getFullYear();
 
-  const birthdayThisYearDate = new Date(currentYear, birthMonth, birthDay);
+  const birthdayThisYearDate = new Date(currentYear, birthMonth, birthDay, birthHour, birthMinute);
   const nextBirthdayYear = birthdayThisYearDate < Date.now() ? currentYear + 1 : currentYear;
-  const nextBirthdayDate = new Date(nextBirthdayYear, birthMonth, birthDay);
+  const nextBirthdayDate = new Date(nextBirthdayYear, birthMonth, birthDay, birthHour, birthMinute);
 
-  const decimalDiff = (Date.now() - nextBirthdayDate.getTime()) / MILLISECONDS_IN_YEAR;
+  const ms = isLeapYear(nextBirthdayDate) ? MILLISECONDS_IN_LEAP_YEAR : MILLISECONDS_IN_YEAR;
+  const decimalDiff = (Date.now() - nextBirthdayDate.getTime()) / ms;
   const yearDiff = nextBirthdayYear - birthYear;
   const age = yearDiff + decimalDiff;
   const parts = age.toFixed(9).toString().split('.');

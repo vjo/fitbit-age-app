@@ -5,9 +5,9 @@ function mySettings(props) {
         title={<Text bold align="center">Age App Settings</Text>}
       >
         <TextInput
-          title="Birthday date"
-          label="Birthday date"
-          placeholder="YYYY-MM-DD"
+          title="Birthday Date"
+          label="Birthday Date"
+          placeholder="YYYY-MM-DD or YYYY-MM-DD HH:mm"
           settingsKey="birthday"
         />
       </Section>
